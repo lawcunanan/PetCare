@@ -1,0 +1,31 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--bg-color: #ffffff;
+	--text-color: #000000;
+	--sidebar-bg: #f1f1f1;
+	--border-color: #e8e7e7;
+}
+
+[data-theme="dark"] {
+	--bg-color: #202123;
+	--text-color: #ffffff;
+	--sidebar-bg: #2b2c2f;
+	--border-color: #383838;
+}
+
+body {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+		"Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+#root {
+	height: 100vh;
+	display: flex;
+	line-height: 1;
+}
