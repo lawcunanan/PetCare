@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import useTheme from "../../controller/useTheme";
 import {
 	FiSun,
@@ -8,14 +7,23 @@ import {
 	FiHelpCircle,
 	FiLogOut,
 } from "react-icons/fi";
-import MyContext from "../../controller/myContext";
+import { useChat } from "../../context/chatContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/firebaseConfig";
 
 const SideMenu = () => {
 	const { theme, toggleTheme } = useTheme();
-	const { updateChats } = useContext(MyContext);
+	const { setChat } = useChat();
 
-	const clearChats = () => {
-		updateChats([]); // ✅ Clears all chats
+	const handleLogout = async () => {
+		try {
+			await signOut(auth);
+			alert("You have been signed out.");
+			window.location.href = "/";
+		} catch (error) {
+			console.error("Sign-out error:", error);
+			alert("Failed to sign out. Please try again.");
+		}
 	};
 
 	return (
@@ -25,7 +33,7 @@ const SideMenu = () => {
 					{theme === "dark" ? <FiSun /> : <FiMoon />} Switch to{" "}
 					{theme === "dark" ? "Light" : "Dark"} Mode
 				</li>
-				<li onClick={clearChats}>
+				<li onClick={() => setChat([])}>
 					<FiTrash2 /> Clear conversations
 				</li>
 				<li>
@@ -34,7 +42,7 @@ const SideMenu = () => {
 				<li>
 					<FiHelpCircle /> Updates & FAQ
 				</li>
-				<li>
+				<li onClick={handleLogout}>
 					<FiLogOut /> Log out
 				</li>
 			</ul>

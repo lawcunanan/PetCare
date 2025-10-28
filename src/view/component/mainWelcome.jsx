@@ -1,8 +1,20 @@
 import React from "react";
-
+import { useState, useContext } from "react";
 import PetLottie from "./petLottie";
+//import callGemini from "../../controller/geminiAPI";
 
+import { useChat } from "../../context/chatContext";
 const MainWelcome = () => {
+	const [faqs, setfaqs] = useState([
+		"How often should I bathe my dog?",
+		"Can cats eat human food?",
+		"What vaccines do puppies need?",
+		"How do I stop my pet from scratching?",
+		"Is it safe to walk pets in hot weather?",
+	]);
+
+	const { addChat } = useChat();
+
 	return (
 		<div className="welcomeContainer">
 			<div className="lottieContainer">
@@ -12,11 +24,11 @@ const MainWelcome = () => {
 			<div className="faqsSection">
 				<p>Frequently Asked Questions</p>
 				<ul className="faqsList">
-					<li>How often should I bathe my dog?</li>
-					<li>Can cats eat human food?</li>
-					<li>What vaccines do puppies need?</li>
-					<li>How do I stop my pet from scratching?</li>
-					<li>Is it safe to walk pets in hot weather?</li>
+					{faqs.map((item, index) => (
+						<li key={index} onClick={() => addChat(item)}>
+							{item}
+						</li>
+					))}
 				</ul>
 			</div>
 		</div>

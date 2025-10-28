@@ -1,15 +1,29 @@
 import React from "react";
 import { FiMenu } from "react-icons/fi";
+import { useUser } from "../../context/userContext";
+
+import profileicon from "../../assets/profileicon.jpg";
 
 const Header = () => {
+	const { userDetails } = useUser();
+
 	return (
 		<header className="header">
 			<FiMenu className="toggleSidebarIcon" />
+
 			<div className="profileContainer">
 				<img
-					src="https://www.bing.com/th/id/OIP.lXuMr3dxbAPT0ucLQIMafQHaF0?w=176&h=185&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+					src={userDetails?.profileImageUrl || profileicon}
 					alt="Profile"
-				/>
+					onError={(e) => {
+					e.target.onerror = null;
+					e.target.src = profileicon;
+					}}
+					/>
+				<span>
+					<h5>{userDetails?.name || "Unknown User"}</h5>
+					<p>{userDetails?.email || "No email"}</p>
+				</span>
 			</div>
 		</header>
 	);

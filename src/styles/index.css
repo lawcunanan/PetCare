@@ -4,7 +4,7 @@
 }
 
 :root {
-	--bg-color: #ffffff;
+	--bg-color: #fdfefe;
 	--text-color: #000000;
 	--sidebar-bg: #f1f1f1;
 	--border-color: #e8e7e7;
@@ -28,4 +28,22 @@ body {
 	height: 100vh;
 	display: flex;
 	line-height: 1;
+}
+
+.authloading-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	z-index: 9999;
+	background-color: var(--bg-color);
+}
+
+.auth {
+	height: 250px;
 }
