@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import SideRegister from "../component/sideRegister";
-import SideMenu from "../component/SideMenu";
+import SideMenu from "../component/sideMenu";
 import Header from "../component/mainHeader";
-import MainChat from "../component/MainChat";
+import MainChat from "../component/mainChat";
 import MainField from "../component/mainField";
-import MainWelcome from "../component/MainWelcome";
+import MainWelcome from "../component/mainWelcome";
 import { useChat } from "../../context/chatContext";
 const Chat = () => {
 	const { chatHistory } = useChat();
